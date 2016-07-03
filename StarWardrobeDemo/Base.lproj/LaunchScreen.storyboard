@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="1024-768-1-1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="H5D-tP-XcY">
+                                <rect key="frame" x="39" y="46" width="336" height="621"/>
+                                <animations/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="960-640-4.png" translatesAutoresizingMaskIntoConstraints="NO" id="A0Y-PT-J53">
+                                <rect key="frame" x="67" y="90" width="280" height="517"/>
+                                <animations/>
+                            </imageView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="A0Y-PT-J53" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Awl-aL-xZd"/>
+                            <constraint firstAttribute="bottom" secondItem="A0Y-PT-J53" secondAttribute="bottom" id="ScL-6L-RCr"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="H5D-tP-XcY" secondAttribute="bottom" id="Tms-rD-l1j"/>
+                            <constraint firstItem="H5D-tP-XcY" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Vi0-Ph-Bzp"/>
+                            <constraint firstAttribute="trailing" secondItem="H5D-tP-XcY" secondAttribute="trailing" id="bvT-A8-6e5"/>
+                            <constraint firstItem="A0Y-PT-J53" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="cDl-xv-1vV"/>
+                            <constraint firstAttribute="trailing" secondItem="A0Y-PT-J53" secondAttribute="trailing" id="mZK-rQ-YFK"/>
+                            <constraint firstItem="H5D-tP-XcY" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="up2-bU-zMQ"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="300" y="404"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="1024-768-1-1.jpg" width="768" height="1024"/>
+        <image name="960-640-4.png" width="640" height="960"/>
+    </resources>
+</document>
