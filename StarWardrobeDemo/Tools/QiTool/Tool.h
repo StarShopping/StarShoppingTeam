@@ -14,6 +14,8 @@
 //两个特价数据
 +(void)initwithtejiadata:(void(^)(NSArray*arr))complay;
 //建立tableview上的数据请求
-+(void)initwithgreateurl:(NSString*)str tableviewinfo:(void(^)(NSArray*arr))complay;
++(void)initWithGreateurl:(NSString*)str tableviewinfo:(void(^)(NSArray*arr))complay;
+//请求尾部数据
++(void)greatetableviewinfor:(void(^)(NSArray*arr))complay;
 
 @end
