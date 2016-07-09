@@ -26,8 +26,7 @@
     
     //引导界面
     ITIntroductionVC *introductionVC = [ITIntroductionVC new];
-    
-    [self.window addSubview:introductionVC.view];
+        [self.window addSubview:introductionVC.view];
     
     
     __block ITIntroductionVC *weakSelf = introductionVC;

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MyselfVC : UIViewController
+@property(nonatomic,copy)NSString*labletext;
 
 @end
