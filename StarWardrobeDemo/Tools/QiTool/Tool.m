@@ -11,6 +11,8 @@
 #import "QiTopModel.h"
 #import "tableviewModel.h"
 #import "BaseModel.h"
+#import "PinPaiModel.h"
+#import "PinLeiModel.h"
 
 @implementation Tool
 +(void)initwithrequestdata:(void(^)(NSArray*arr))complay{
@@ -159,6 +161,68 @@
     }];
 
 
+
+
+}
++(void)greatepinpaiviewinfo:(void(^)(NSArray*arr))complay{
+    AFHTTPSessionManager * mange = [AFHTTPSessionManager manager];
+    mange.responseSerializer = [AFHTTPResponseSerializer serializer];
+    mange.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+[mange GET:@"http://api-v2.mall.hichao.com/category/list?gc=appstore&gf=iphone&gn=mxyc_ip&gv=6.6.3&gi=5243F177-D4FD-4E4C-9B60-6E1E954CB1E2&gs=640x1136&gos=8.4&access_token=2fuXENgNoun4DcuCyG9NIeJqnxSWtuQxRgJpmSF_GeU" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    NSDictionary*dic= [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+    NSLog(@">>>>>>>>qi>>>%@",dic);
+    NSArray*arr = dic[@"data"][@"items"];
+    NSMutableArray * array = [NSMutableArray array];
+    for (NSDictionary*dict in arr) {
+        PinPaiModel*model = [PinPaiModel greateinitwithmodeldata:dict];
+        [array addObject:model];
+    }
+    if (complay) {
+        complay(array);
+    }else{
+        if (complay) {
+             complay(nil);
+        }
+       
+    
+    }
+    
+} failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    NSLog(@"%@",error.localizedDescription);
+    if (complay) {
+        complay(nil);
+    }
+}];
+
+
+}
++(void)greatpinleiinfodata:(void(^)(NSArray*arr))complay{
+    AFHTTPSessionManager * mange = [AFHTTPSessionManager manager];
+    mange.responseSerializer = [AFHTTPResponseSerializer serializer];
+    mange.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+    [mange GET:@"http://api-v2.mall.hichao.com/region/brands/list?gc=appstore&gf=iphone&gn=mxyc_ip&gv=6.6.3&gi=5243F177-D4FD-4E4C-9B60-6E1E954CB1E2&gs=640x1136&gos=8.4&access_token=2fuXENgNoun4DcuCyG9NIeJqnxSWtuQxRgJpmSF_GeU" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        NSDictionary * dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        NSLog(@">>qi>>%@",dic);
+        NSArray*arr = dic[@"data"][@"items"];
+        NSMutableArray * array = [NSMutableArray array];
+        for (NSDictionary*dic in arr) {
+            PinLeiModel*mode = [PinLeiModel greateinitwithgreatepinleimodeldata:dic];
+            [array addObject:mode];
+        }
+        if (complay) {
+            complay(array);
+        }else{
+            if (complay) {
+                complay(nil);
+            }
+        
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@",error.localizedDescription);
+        if (complay) {
+            complay(nil);
+        }
+    }];
 
 
 }

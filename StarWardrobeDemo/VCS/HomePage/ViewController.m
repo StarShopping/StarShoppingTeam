@@ -12,6 +12,10 @@
 #import "QiTopModel.h"
 #import "tableviewModel.h"
 #import "BaseModel.h"
+#import "textTool.h"
+#import "daohangViewController.h"
+#import "zhuantiViewController.h"
+#import "fenleiViewController.h"
 
 #import "QiModel/tableviewModel.h"
 
@@ -41,11 +45,83 @@
 @end
 
 @implementation ViewController
+#pragma mark -----建立导航栏
+- (void)greatedaohang{
+    for (NSInteger j = 0; j<2; j++) {
+         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.frame = CGRectMake(0, 0, 44, 44);
+        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        button.titleLabel.font = [UIFont systemFontOfSize:10];
+        button.titleLabel.textAlignment = NSTextAlignmentCenter;
+        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+
+    
+        if (j==0) {
+            [button setTitle:@"分类" forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:@"bottom_head_sort@3x"] forState:UIControlStateNormal];
+            [button addTarget:self action:@selector(rightbutton) forControlEvents:UIControlEventTouchUpInside];
+            self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
+
+        }else{
+        
+            [button setTitle:@"消息" forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:@"bottom_comment_button@3x"] forState:UIControlStateNormal];
+            [button addTarget:self action:@selector(leftbutton) forControlEvents:UIControlEventTouchUpInside];
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:button];
+
+        }
+    
+    
+   
+    
+        
+    CGFloat buttonHeight = CGRectGetHeight(button.bounds);
+    CGFloat buttonWidth = CGRectGetWidth(button.bounds);
+    CGFloat buttonLableWidth = CGRectGetWidth(button.titleLabel.bounds);
+    CGFloat buttonImageWidth = CGRectGetWidth(button.imageView.bounds);
+    UIEdgeInsets edge = UIEdgeInsetsMake(0,(buttonWidth-buttonImageWidth)/2, 5, (buttonWidth - buttonImageWidth)/2-10);
+    button.imageEdgeInsets = edge;
+    
+    button.titleEdgeInsets = UIEdgeInsetsMake(buttonHeight-edge.bottom, -(buttonWidth - buttonLableWidth)/2, 5, 0);
+    
+    
+   
+    }
+
+    UITextField*textfield = [textTool initwithgreatetextfieldnew];
+    [textfield addTarget:self action:@selector(textfieldmide) forControlEvents:UIControlEventTouchDown];
+    self.navigationItem.titleView = textfield;
+
+}
+- (void)textfieldmide{
+    daohangViewController * daohangvc = [daohangViewController new];
+    [self.navigationController pushViewController:daohangvc animated:YES];
+    
+
+
+}
+
+-(void)rightbutton{
+    fenleiViewController*fenleivc = [fenleiViewController new];
+    
+    [self.navigationController pushViewController:fenleivc animated:YES];
+//    fenleivc.navigationController.navigationBar.tintColor = [UIColor blackColor];
+  
+   
+
+
+}
+-(void)leftbutton{
+    NSLog(@"消息");
+
+
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-#pragma 请求头数据源
+    [self greatedaohang];
+    
+  #pragma 请求头数据源
     [Tool initwithrequestdata:^(NSArray *arr)
     {
         [self.datarray addObjectsFromArray:arr];
@@ -97,7 +173,8 @@
             button.frame = CGRectMake( kMainBoundsW * i, 0, kMainBoundsW, TOPscroll.frame.size.height );
             [button sd_setBackgroundImageWithURL:[NSURL URLWithString:model.picUrl] forState:UIControlStateNormal];
             
-            [button addTarget:self action:@selector( buttonclick: ) forControlEvents:UIControlEventTouchUpInside];
+            [button addTarget:self action:@selector( topclick: ) forControlEvents:UIControlEventTouchUpInside];
+            button.tag = 10 + i ;
             [TOPscroll addSubview:button];
             
        }
@@ -138,10 +215,13 @@
    
     return view;
 }
+-(void)topclick:(UIButton * )sender{
+    NSLog(@"%ld",sender.tag - 10);
 
-- ( void )buttonclick:( UIButton * )sender
-{
+
 }
+
+
 #pragma mark---page代理调用方法
 - ( void )pageclick
 {

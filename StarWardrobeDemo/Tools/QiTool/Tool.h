@@ -17,5 +17,9 @@
 +(void)initWithGreateurl:(NSString*)str tableviewinfo:(void(^)(NSArray*arr))complay;
 //请求尾部数据
 +(void)greatetableviewinfor:(void(^)(NSArray*arr))complay;
+//请求品牌数据
++(void)greatepinpaiviewinfo:(void(^)(NSArray*arr))complay;
+// 请求品类数据
++(void)greatpinleiinfodata:(void(^)(NSArray*arr))complay;
 
 @end
